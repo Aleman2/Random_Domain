@@ -10,20 +10,48 @@
       integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
       crossorigin="anonymous"
     />
+    <script>
+      function random() {
+        var pronoun = ["the", "our", "mig", "pat"];
+        var adj = ["great", "big", "rob", "cal"];
+        var noun = ["jognet", "racom", "kales", "roman"];
+        var com = /com$/;
+        var net = /net$/;
+        var es = /es$/;
+        var reg = /com$|net$|es$/;
+        for (var l = 0; l < pronoun.length; l++) {
+          for (var k = 0; k < adj.length; k++) {
+            for (var i = 0; i < noun.length; i++) {
+              var text = pronoun[l] + adj[k] + noun[i];
+
+              com.test(text) ? (text = text.replace(com, ".com")) : "";
+              net.test(text) ? (text = text.replace(net, ".net")) : "";
+              es.test(text) ? (text = text.replace(es, ".es")) : "";
+              reg.test(text) ? "" : (text = text + ".php");
+
+              var a = document.createElement("a");
+              a.setAttribute("href", text);
+              a.textContent = text;
+              var body = document.body;
+              body.appendChild(a);
+              var br = document.createElement("br");
+              body.appendChild(br);
+            }
+          }
+        }
+      }
+    </script>
     <link rel="shortcut icon" href="./4geeks.ico" />
   </head>
   <body>
     <div class="container-fluid text-center">
-      <h1 class="mt-5">Hello Rigo!</h1>
-      <img src="./rigo-baby.jpg" />
-      <p class="alert alert-warning mt-4">
-        If this text is <b>not</b> centered and <b>yellow</b>, you probably have
-        an error
-      </p>
-      <div class="fixed-bottom p-4">
-        Made with ❤️ by
-        <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
-      </div>
+      <button
+        onclick="random()"
+        style="border:1px solid black;border-radius:5px;"
+      >
+        Dominios gratis
+      </button>
+      <br />
     </div>
   </body>
 </html>
